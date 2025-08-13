@@ -11,6 +11,10 @@ public class CeilingOfANumber {
     {
         int start=0,end=arr.length-1;
         int mid;
+        if(target > arr[end])
+        {
+            return -1;
+        }
         while(start<=end)
         {
             mid=start+(end-start)/2;
