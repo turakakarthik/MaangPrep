@@ -11,32 +11,23 @@ public class FirstAndLastOccurenceOfANumber {
     }
     static int[] firstAndLastOccurence(int[] arr,int target)
     {
-        int ans[] = {-1,-1};
+        int start = search(arr, target, true);
+        int end =  search(arr, target, false);
+        return new int[]{start,end};
+    }   
+    static int search(int[] arr,int target,boolean firstIndexSearch)
+    {
         int start=0,end=arr.length-1;
-        int mid;
+        int mid,ans=-1;
         while(start<=end)
         {
             mid=start+(end-start)/2;
             if(arr[mid]==target)
             {
-                ans[0]=mid;
+                ans=mid;
+                if(firstIndexSearch)
                 end=mid-1;
-            }
-            else if(target<arr[mid])
-            {
-                end=mid-1;
-            }
-            else{
-                start=mid+1;
-            }
-        }
-        start=0;end=arr.length-1;
-        while(start<=end)
-        {
-            mid=start+(end-start)/2;
-            if(arr[mid]==target)
-            {
-                ans[1]=mid;
+                else
                 start=mid+1;
             }
             else if(target<arr[mid])
