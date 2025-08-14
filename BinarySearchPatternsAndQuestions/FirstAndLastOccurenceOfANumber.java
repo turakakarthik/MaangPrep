@@ -12,7 +12,15 @@ public class FirstAndLastOccurenceOfANumber {
     static int[] firstAndLastOccurence(int[] arr,int target)
     {
         int start = search(arr, target, true);
-        int end =  search(arr, target, false);
+        int end;
+        if(start==-1)
+        {
+            end=-1;
+        }
+        else
+        {
+            end =search(arr, target, false);
+        }
         return new int[]{start,end};
     }   
     static int search(int[] arr,int target,boolean firstIndexSearch)
