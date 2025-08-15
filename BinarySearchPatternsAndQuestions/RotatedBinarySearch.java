@@ -5,6 +5,12 @@ public class RotatedBinarySearch {
     public static void main(String[] args) {
         int[] arr = {4,5,6,7,0,1,2};
         int pivot = findPivot(arr);
+        if(pivot == -1)
+        {
+            //return binarySearch(arr,0,arr.length-1,0);
+            int idx = binarySearch(arr,0,arr.length-1,0);
+            System.out.println("Element found at "+idx);
+        }
        // System.out.println("pivot element is "+arr[pivot]);
         int idx1 = binarySearch(arr, 0,pivot,0);
         int idx2 = binarySearch(arr, pivot+1,arr.length-1,0);
