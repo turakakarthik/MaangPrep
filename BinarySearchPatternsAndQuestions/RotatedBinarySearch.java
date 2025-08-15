@@ -5,6 +5,7 @@ public class RotatedBinarySearch {
     public static void main(String[] args) {
         int[] arr = {4,5,6,7,0,1,2};
         int pivot = findPivot(arr);
+        int target=0,start=0;
         if(pivot == -1)
         {
             //return binarySearch(arr,0,arr.length-1,0);
@@ -12,20 +13,40 @@ public class RotatedBinarySearch {
             System.out.println("Element found at "+idx);
         }
        // System.out.println("pivot element is "+arr[pivot]);
-        int idx1 = binarySearch(arr, 0,pivot,0);
-        int idx2 = binarySearch(arr, pivot+1,arr.length-1,0);
-        if(idx1 == -1 && idx2 == -1)
-        {
-             System.out.println("Element not found");
-            // return -1;
-        }
-        if(idx1 != -1){
-             System.out.println("Element found at "+idx1);
-           // return idx1;
-        }
-        else{
-            System.out.println("Element found at "+idx2);
-            //return idx2;
+       //adding furthur optimization
+       if(arr[pivot]==target)
+       {
+         //return pivot;
+         System.out.println("Element found at "+pivot);
+       }
+       else if(target>arr[start])
+       {
+         int idx = binarySearch(arr, start, pivot-1, target);
+        // return idx;
+         System.out.println("Element found at "+idx);
+       }
+       else if(target<arr[start])
+       {
+         int idx = binarySearch(arr, pivot+1,arr.length-1, target);
+         //return idx;
+         System.out.println("Element found at "+idx);
+       }
+       else{
+            int idx1 = binarySearch(arr, 0,pivot,target);
+            int idx2 = binarySearch(arr, pivot+1,arr.length-1,target);
+            if(idx1 == -1 && idx2 == -1)
+            {
+                System.out.println("Element not found");
+                // return -1;
+            }
+            if(idx1 != -1){
+                System.out.println("Element found at "+idx1);
+            // return idx1;
+            }
+            else{
+                System.out.println("Element found at "+idx2);
+                //return idx2;
+            }
         }
     }
     static int binarySearch(int arr[],int start,int end,int target)
