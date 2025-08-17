@@ -78,6 +78,7 @@ public class RotatedBinarySearch {
         while(start<=end)
         {
             mid=start+(end-start)/2;
+            //four cases over here
            // System.out.println("start is "+start+" end is "+end+" mid is "+mid);
             if(mid<end && arr[mid]>arr[mid+1])
             {
