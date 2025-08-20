@@ -1,4 +1,3 @@
-package SortingTechniques;
 
 import java.util.Arrays;
 
