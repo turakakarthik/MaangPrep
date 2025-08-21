@@ -2,17 +2,9 @@ package CyclicSortPatternQuestions;
 
 public class FindDuplicate {
     public int findDuplicate(int[] nums) {
-        cyclicSort(nums);
-        for(int i=0;i<nums.length;i++)
-        {
-            if(nums[i]!=i+1)
-            {
-                return nums[i];
-            }
-        }
-       return -1;
+        return cyclicSort(nums);
     }
-    static void cyclicSort(int arr[])
+    static int cyclicSort(int arr[])
     {
         int i=0;
         while(i<arr.length)
@@ -20,6 +12,10 @@ public class FindDuplicate {
             int correct = arr[i]-1;
             if(arr[i]==arr[correct])
             {
+                if(i!=correct)
+                {
+                    return arr[i];
+                }
                 i++;
             }
             else
@@ -27,6 +23,7 @@ public class FindDuplicate {
                 swap(arr,i,correct);
             }
         }
+        return -1;
     }
     static void swap(int arr[],int idx1,int idx2)
     {
